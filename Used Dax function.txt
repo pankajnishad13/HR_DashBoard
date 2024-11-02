@@ -1,0 +1,28 @@
+Dax function for column:
+
+1. Hiring Year = YEAR('HR Practice data set'[HiringDate])
+
+2. Satisfaction Status = SWITCH(TRUE(),'HR Practice data set'[EmployeeSatisfaction]=1,"Very Low",'HR Practice data set'[EmployeeSatisfaction]=2,"Low",'HR Practice data set'[EmployeeSatisfaction]=3,"Acceptable",'HR Practice data set'[EmployeeSatisfaction]=4,"High",'HR Practice data set'[EmployeeSatisfaction]=1,"Very High")
+
+
+============================================================================================================================================================
+
+
+Dax function for Measure: 
+
+
+1. Active Emp = IF(ISBLANK(CALCULATE(COUNT('HR Practice data set'[EmployeeID]), 'HR Practice data set'[EmploymentStatus (groups)]="Active")),0,CALCULATE(COUNT('HR Practice data set'[EmployeeID]), 'HR Practice data set'[EmploymentStatus (groups)]="Active"))
+
+2.Active % = DIVIDE([Active Emp],COUNT('HR Practice data set'[EmployeeID]),0)
+
+3. Terminated Emp = IF(ISBLANK(CALCULATE(COUNT('HR Practice data set'[EmployeeID]), 'HR Practice data set'[EmploymentStatus (groups)]="Terminated")),0,CALCULATE(COUNT('HR Practice data set'[EmployeeID]), 'HR Practice data set'[EmploymentStatus (groups)]="Terminated"))
+
+4. Terminated % = DIVIDE([Terminated Emp],COUNT('HR Practice data set'[EmployeeID]),0)
+
+5. Male = IF(ISBLANK(CALCULATE(COUNT('HR Practice data set'[EmployeeID]),'HR Practice data set'[Gender]="M")),0,CALCULATE(COUNT('HR Practice data set'[EmployeeID]),'HR Practice data set'[Gender]="M"))
+
+6. Male % = DIVIDE([Male],COUNT('HR Practice data set'[EmployeeID]),0)
+
+7. Female = IF(ISBLANK(CALCULATE(COUNT('HR Practice data set'[EmployeeID]),'HR Practice data set'[Gender]="F")),0,CALCULATE(COUNT('HR Practice data set'[EmployeeID]),'HR Practice data set'[Gender]="F"))
+
+8. Female % = DIVIDE([Female],COUNT('HR Practice data set'[EmployeeID]),0)
